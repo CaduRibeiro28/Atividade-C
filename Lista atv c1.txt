@@ -1,0 +1,270 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Exercício 1: Números de 1 a 10
+void numeros_1_a_10() {
+    for (int i = 1; i <= 10; i++) {
+        printf("%d\n", i);
+    }
+}
+
+// Exercício 2: Números até um Valor
+void numeros_ate_valor() {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        printf("%d\n", i);
+    }
+}
+
+// Exercício 3: Soma dos Números Pares
+void soma_pares() {
+    int soma = 0;
+
+    for (int i = 1; i <= 100; i++) {
+        if (i % 2 == 0) {
+            soma += i;
+        }
+    }
+
+    printf("Soma dos números pares de 1 a 100: %d\n", soma);
+}
+
+// Exercício 4: Adivinhação de Número
+void adivinhacao_numero() {
+    int numero_secreto = 42, chute;
+
+    do {
+        printf("Adivinhe o número: ");
+        scanf("%d", &chute);
+        if (chute != numero_secreto) {
+            printf("Errado! Tente novamente.\n");
+        }
+    } while (chute != numero_secreto);
+
+    printf("Parabéns! Você acertou.\n");
+}
+
+// Exercício 5: Média de Números
+void media_numeros() {
+    int numero, soma = 0;
+
+    for (int i = 1; i <= 10; i++) {
+        printf("Digite o número %d: ", i);
+        scanf("%d", &numero);
+        soma += numero;
+    }
+
+    printf("Média: %.2f\n", soma / 10.0);
+}
+
+// Exercício 6: Tabela de Multiplicação
+void tabela_multiplicacao() {
+    int numero;
+
+    printf("Digite um número para a tabela de multiplicação: ");
+    scanf("%d", &numero);
+
+    for (int i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", numero, i, numero * i);
+    }
+}
+
+// Exercício 7: Maior Número
+void maior_numero() {
+    int n, numero, maior;
+
+    printf("Quantos números você deseja comparar? ");
+    scanf("%d", &n);
+
+    printf("Digite o número 1: ");
+    scanf("%d", &maior);
+
+    for (int i = 2; i <= n; i++) {
+        printf("Digite o número %d: ", i);
+        scanf("%d", &numero);
+        if (numero > maior) {
+            maior = numero;
+        }
+    }
+
+    printf("O maior número é: %d\n", maior);
+}
+
+// Exercício 8: Soma dos Dígitos
+void soma_digitos() {
+    int numero, soma = 0;
+
+    printf("Digite um número inteiro: ");
+    scanf("%d", &numero);
+
+    while (numero > 0) {
+        soma += numero % 10;
+        numero /= 10;
+    }
+
+    printf("Soma dos dígitos: %d\n", soma);
+}
+
+// Exercício 9: Leitura até Número Negativo
+void leitura_ate_negativo() {
+    int numero;
+
+    do {
+        printf("Digite um número: ");
+        scanf("%d", &numero);
+        if (numero >= 0) {
+            printf("Você digitou: %d\n", numero);
+        }
+    } while (numero >= 0);
+
+    printf("Número negativo detectado. Programa encerrado.\n");
+}
+
+// Exercício 10: Leitura até Número Igual
+void leitura_ate_igual() {
+    int numero, anterior = -1;
+
+    do {
+        printf("Digite um número: ");
+        scanf("%d", &numero);
+
+        if (numero == anterior) {
+            printf("Você digitou o mesmo número. Encerrando.\n");
+            break;
+        }
+
+        anterior = numero;
+    } while (1);
+}
+
+// Exercício 11: Número Primo
+void numero_primo() {
+    int numero, i, ehPrimo = 1;
+
+    printf("Digite um número: ");
+    scanf("%d", &numero);
+
+    for (i = 2; i <= numero / 2; i++) {
+        if (numero % i == 0) {
+            ehPrimo = 0;
+            break;
+        }
+    }
+
+    if (ehPrimo && numero > 1) {
+        printf("É primo.\n");
+    } else {
+        printf("Não é primo.\n");
+    }
+}
+
+// Exercício 12: Número Palíndromo
+void numero_palindromo() {
+    int numero, reverso = 0, original;
+
+    printf("Digite um número: ");
+    scanf("%d", &numero);
+
+    original = numero;
+
+    while (numero > 0) {
+        reverso = reverso * 10 + numero % 10;
+        numero /= 10;
+    }
+
+    if (reverso == original) {
+        printf("É palíndromo.\n");
+    } else {
+        printf("Não é palíndromo.\n");
+    }
+}
+
+// Exercício 13: Positivo, Negativo ou Zero
+void positivo_negativo_zero() {
+    int numero;
+
+    do {
+        printf("Digite um número (0 para sair): ");
+        scanf("%d", &numero);
+
+        if (numero > 0) {
+            printf("Positivo.\n");
+        } else if (numero < 0) {
+            printf("Negativo.\n");
+        } else {
+            printf("Zero.\n");
+        }
+    } while (numero != 0);
+}
+
+// Exercício 14: Jogo de Adivinhação
+void jogo_adivinhacao() {
+    srand(time(NULL));
+    int numero_secreto = rand() % 100 + 1, chute;
+
+    do {
+        printf("Adivinhe o número (1 a 100): ");
+        scanf("%d", &chute);
+
+        if (chute < numero_secreto) {
+            printf("Muito baixo.\n");
+        } else if (chute > numero_secreto) {
+            printf("Muito alto.\n");
+        }
+    } while (chute != numero_secreto);
+
+    printf("Parabéns! Você acertou.\n");
+}
+
+// Exercício 15: Senha de 4 Dígitos
+void senha_4_digitos() {
+    int senha;
+
+    do {
+        printf("Digite a senha de 4 dígitos: ");
+        scanf("%d", &senha);
+
+        if (senha == 1234) {
+            printf("ACESSO PERMITIDO!\n");
+            break;
+        } else {
+            printf("ACESSO NEGADO\n");
+        }
+    } while (1);
+}
+
+// Função principal
+int main() {
+    int escolha;
+
+    do {
+        printf("\nEscolha um exercício para executar (1-15, 0 para sair):\n");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1: numeros_1_a_10(); break;
+            case 2: numeros_ate_valor(); break;
+            case 3: soma_pares(); break;
+            case 4: adivinhacao_numero(); break;
+            case 5: media_numeros(); break;
+            case 6: tabela_multiplicacao(); break;
+            case 7: maior_numero(); break;
+            case 8: soma_digitos(); break;
+            case 9: leitura_ate_negativo(); break;
+            case 10: leitura_ate_igual(); break;
+            case 11: numero_primo(); break;
+            case 12: numero_palindromo(); break;
+            case 13: positivo_negativo_zero(); break;
+            case 14: jogo_adivinhacao(); break;
+            case 15: senha_4_digitos(); break;
+            case 0: printf("Encerrando o programa.\n"); break;
+            default: printf("Opção inválida. Tente novamente.\n");
+        }
+    } while (escolha != 0);
+
+    return 0;
+}

@@ -1,0 +1,225 @@
+Ex 1 
+// Carlos Eduardo Ribeiro
+#include <stdio.h>
+
+int primo(int num) {
+    if (num < 2) {
+        return 0; 
+    }
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            return 0; 
+        }
+    }
+    return 1; 
+}
+
+int somaPrimos(int n) {
+    int soma = 0; 
+    int count = 0; 
+    int num = 2;   
+
+    while (count < n) {
+        if (primo(num)) {  
+            soma += num;   
+            count++;      
+        }
+        num++; 
+    }
+
+    return soma;  
+}
+
+int main() {
+    int n;
+    
+    printf("Digite a quantidade de números primos a somar: ");
+    scanf("%d", &n);
+    
+    int resultado = somaPrimos(n);
+    printf("A soma dos %d primeiros números primos é: %d\n", n, resultado);
+
+    return 0;
+}
+
+
+Ex 2
+// Carlos Eduardo
+
+#include <stdio.h>
+
+float mediaTurma(int num_alunos) {
+    int soma = 0, nota;
+    for (int i = 0; i < num_alunos; i++) {
+        printf("Digite a nota do aluno %d: ", i + 1);
+        scanf("%d", &nota);
+        soma += nota;
+    }
+    return (float)soma / num_alunos;
+}
+
+float mediaEscola(int num_turmas) {
+    int num_alunos;
+    float soma_medias = 0;
+
+    for (int i = 0; i < num_turmas; i++) {
+        printf("Digite o número de alunos da turma %d: ", i + 1);
+        scanf("%d", &num_alunos);
+        
+        float media_turma = mediaTurma(num_alunos);
+        printf("A média da turma %d é: %.2f\n", i + 1, media_turma);
+        
+        soma_medias += media_turma;
+    }
+    
+    return soma_medias / num_turmas;
+}
+
+int main() {
+    int num_turmas;
+    
+    printf("Digite o número de turmas: ");
+    scanf("%d", &num_turmas);
+    
+    float media_geral = mediaEscola(num_turmas);
+    printf("A média geral da escola é: %.2f\n", media_geral);
+    
+    return 0;
+}
+
+
+Ex 3
+// Carlos Eduardo
+
+#include <stdio.h>
+
+int fibonacci(int n) {
+    if (n == 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+
+int main() {
+    int n;
+
+    printf("Digite o valor de n para calcular o n-ésimo termo da série de Fibonacci: ");
+    scanf("%d", &n);
+
+    printf("O %d-ésimo termo da série de Fibonacci é: %d\n", n, fibonacci(n));
+
+    return 0;
+}
+
+
+Ex 4
+// Carlos Eduardo
+#include <stdio.h>
+
+
+int somatorio(int n) {
+    int soma = 0;
+    for (int i = 1; i <= n; i++) {
+        soma += i;
+    }
+    return soma;
+}
+
+int main() {
+    int n;
+    printf("Digite o valor de n para calcular o somatorio: ");
+    scanf("%d", &n);
+    int resultado = somatorio(n);
+    printf("O somatorio de 1 a %d e: %d\n", n, resultado);
+    return 0;
+}
+
+
+Ex 5
+// Carlos Eduardo
+#include <stdio.h>
+
+int soma(int a, int b);
+
+int main() {
+    int num1, num2, resultado;
+    printf("Digite o primeiro número inteiro: ");
+    scanf("%d", &num1);
+   
+    printf("Digite o segundo número inteiro: ");
+    scanf("%d", &num2);
+   
+    resultado = soma(num1, num2);
+    printf("A soma de %d e %d é: %d\n", num1, num2, resultado);
+   
+    return 0;
+}
+
+int soma(int a, int b) {
+    return a + b;
+}
+
+
+Ex 6
+// Carlos Eduardo
+#include <stdio.h>
+
+int maior(int a, int b);
+
+int main() {
+    int num1, num2, resultado;
+    
+    printf("Digite o primeiro número inteiro: ");
+    scanf("%d", &num1);
+    printf("Digite o segundo número inteiro: ");
+    scanf("%d", &num2);
+    
+    resultado = maior(num1, num2);
+    
+    printf("O maior número é: %d\n", resultado);
+    
+    return 0;
+}
+
+int maior(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+
+Ex 7
+// Carlos Eduardo
+#include <stdio.h>
+
+int somaVetor(int vetor[], int tamanho);
+
+int main() {
+    int vetor[3];
+    
+    for (int i = 0; i < 3; i++) {
+        printf("Digite o %dº número inteiro: ", i + 1);
+        scanf("%d", &vetor[i]);
+    }
+    
+    int resultado = somaVetor(vetor, 3);
+    
+    printf("A soma dos valores do vetor é: %d\n", resultado);
+    
+    return 0;
+}
+
+int somaVetor(int vetor[], int tamanho) {
+    int soma = 0;
+    
+    for (int i = 0; i < tamanho; i++) {
+        soma += vetor[i];
+    }
+    
+    return soma;
+}

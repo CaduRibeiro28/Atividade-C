@@ -1,0 +1,452 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <time.h>
+
+void fatorialNumero() {
+    int n, i, fatorial = 1;
+    printf("Digite um número inteiro positivo: ");
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++) {
+        fatorial *= i;
+    }
+    printf("Fatorial de %d é %d\n", n, fatorial);
+}
+
+void fibonacci() {
+    int n, a = 0, b = 1, aux;
+    printf("Digite o número de termos da sequência de Fibonacci: ");
+    scanf("%d", &n);
+    printf("Sequência de Fibonacci: ");
+    while (n > 0) {
+        printf("%d ", a);
+        aux = a + b;
+        a = b;
+        b = aux;
+        n--;
+    }
+    printf("\n");
+}
+
+void tabuadaReversa() {
+    int n, i;
+    printf("Digite um número para a tabuada reversa: ");
+    scanf("%d", &n);
+    for (i = 10; i >= 1; i--) {
+        printf("%d x %d = %d\n", n, i, n * i);
+    }
+}
+
+void numerosImpares() {
+    printf("Números ímpares de 1 a 50:\n");
+    for (int i = 1; i <= 50; i += 2) {
+        printf("%d ", i);
+    }
+    printf("\n");
+}
+
+void somatorioNumeros() {
+    int n, soma = 0, i = 1;
+    printf("Digite o valor de n: ");
+    scanf("%d", &n);
+    while (i <= n) {
+        soma += i;
+        i++;
+    }
+    printf("Soma dos números de 1 a %d é %d\n", n, soma);
+}
+
+void numerosPrimosIntervalo() {
+    int n, i, j, primo;
+    printf("Digite o valor de n: ");
+    scanf("%d", &n);
+    printf("Números primos entre 1 e %d:\n", n);
+    for (i = 2; i <= n; i++) {
+        primo = 1;
+        for (j = 2; j <= i / 2; j++) {
+            if (i % j == 0) {
+                primo = 0;
+                break;
+            }
+        }
+        if (primo) printf("%d ", i);
+    }
+    printf("\n");
+}
+
+void contadorDigitos() {
+    int n, count = 0;
+    printf("Digite um número inteiro: ");
+    scanf("%d", &n);
+    while (n != 0) {
+        n /= 10;
+        count++;
+    }
+    printf("O número tem %d dígitos.\n", count);
+}
+
+void somaNumerosLista() {
+    int n, soma = 0, num;
+    printf("Digite a quantidade de números: ");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        printf("Digite o número %d: ", i + 1);
+        scanf("%d", &num);
+        soma += num;
+    }
+    printf("Soma dos números fornecidos: %d\n", soma);
+}
+
+void inverterNumero() {
+    int n, invertido = 0;
+    printf("Digite um número inteiro: ");
+    scanf("%d", &n);
+    while (n != 0) {
+        invertido = invertido * 10 + n % 10;
+        n /= 10;
+    }
+    printf("Número invertido: %d\n", invertido);
+}
+
+void tabelaQuadrados() {
+    int n;
+    printf("Digite o valor de n: ");
+    scanf("%d", &n);
+    printf("Número  Quadrado\n");
+    for (int i = 1; i <= n; i++) {
+        printf("%-7d %d\n", i, i * i);
+    }
+}
+
+void menu() {
+    printf("\n--- Lista de Exercícios ---\n");
+    printf("1. Fatorial de um Número\n");
+    printf("2. Sequência de Fibonacci\n");
+    printf("3. Tabuada Reversa\n");
+    printf("4. Números Ímpares\n");
+    printf("5. Somatório de Números\n");
+    printf("6. Números Primos em um Intervalo\n");
+    printf("7. Contador de Dígitos\n");
+    printf("8. Soma dos Números em uma Lista\n");
+    printf("9. Inversão de Número\n");
+    printf("10. Tabela de Quadrados\n");
+    printf("0. Sair\n");
+    printf("---------------------------\n");
+    printf("Escolha uma opção: ");
+}
+
+int main() {
+    int opcao;
+
+    do {
+        menu();
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                fatorialNumero();
+                break;
+            case 2:
+                fibonacci();
+                break;
+            case 3:
+                tabuadaReversa();
+                break;
+            case 4:
+                numerosImpares();
+                break;
+            case 5:
+                somatorioNumeros();
+                break;
+            case 6:
+                numerosPrimosIntervalo();
+                break;
+            case 7:
+                contadorDigitos();
+                break;
+            case 8:
+                somaNumerosLista();
+                break;
+            case 9:
+                inverterNumero();
+                break;
+            case 10:
+                tabelaQuadrados();
+                break;
+            case 0:
+                printf("Saindo do programa.\n");
+                break;
+            default:
+                printf("Opção inválida. Tente novamente.\n");
+        }
+    } while (opcao != 0);
+
+    return 0;
+}
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <time.h>
+#include <math.h>
+
+// Função 1: Calculadora Simples
+void calculadoraSimples() {
+    int opcao;
+    float num1, num2, resultado;
+    do {
+        printf("\n--- Calculadora Simples ---\n");
+        printf("1. Adição\n");
+        printf("2. Subtração\n");
+        printf("3. Multiplicação\n");
+        printf("4. Divisão\n");
+        printf("0. Voltar ao menu principal\n");
+        printf("Escolha uma operação: ");
+        scanf("%d", &opcao);
+        if (opcao == 0) break;
+        printf("Digite o primeiro número: ");
+        scanf("%f", &num1);
+        printf("Digite o segundo número: ");
+        scanf("%f", &num2);
+        switch (opcao) {
+            case 1:
+                resultado = num1 + num2;
+                printf("Resultado: %.2f\n", resultado);
+                break;
+            case 2:
+                resultado = num1 - num2;
+                printf("Resultado: %.2f\n", resultado);
+                break;
+            case 3:
+                resultado = num1 * num2;
+                printf("Resultado: %.2f\n", resultado);
+                break;
+            case 4:
+                if (num2 != 0)
+                    resultado = num1 / num2;
+                else {
+                    printf("Erro: Divisão por zero!\n");
+                    continue;
+                }
+                printf("Resultado: %.2f\n", resultado);
+                break;
+            default:
+                printf("Opção inválida.\n");
+        }
+    } while (1);
+}
+
+// Função 2: Contador de Vogais
+void contadorVogais() {
+    char str[100];
+    int i, vogais = 0;
+    printf("Digite uma string: ");
+    getchar(); // Limpa buffer
+    fgets(str, sizeof(str), stdin);
+    for (i = 0; str[i] != '\0'; i++) {
+        if (strchr("aeiouAEIOU", str[i])) vogais++;
+    }
+    printf("Número de vogais: %d\n", vogais);
+}
+
+// Função 3: Conversor de Temperatura
+void conversorTemperatura() {
+    float temp, convertida;
+    char unidade;
+    do {
+        printf("\nDigite a temperatura seguida de C (Celsius) ou F (Fahrenheit), ou 0 para sair: ");
+        scanf("%f", &temp);
+        if (temp == 0) break;
+        scanf(" %c", &unidade);
+        if (unidade == 'C' || unidade == 'c') {
+            convertida = (temp * 9 / 5) + 32;
+            printf("%.2f°C = %.2f°F\n", temp, convertida);
+        } else if (unidade == 'F' || unidade == 'f') {
+            convertida = (temp - 32) * 5 / 9;
+            printf("%.2f°F = %.2f°C\n", temp, convertida);
+        } else {
+            printf("Unidade inválida.\n");
+        }
+    } while (1);
+}
+
+// Função 4: Validador de Senha
+void validadorSenha() {
+    char senha[100];
+    int valido;
+    do {
+        valido = 0;
+        printf("\nDigite uma senha: ");
+        scanf("%s", senha);
+        if (strlen(senha) >= 8) {
+            int temMaiuscula = 0, temMinuscula = 0, temDigito = 0;
+            for (int i = 0; senha[i]; i++) {
+                if (isupper(senha[i])) temMaiuscula = 1;
+                if (islower(senha[i])) temMinuscula = 1;
+                if (isdigit(senha[i])) temDigito = 1;
+            }
+            if (temMaiuscula && temMinuscula && temDigito) {
+                printf("Senha válida.\n");
+                valido = 1;
+            } else {
+                printf("A senha deve conter pelo menos uma letra maiúscula, uma minúscula e um dígito.\n");
+            }
+        } else {
+            printf("A senha deve ter pelo menos 8 caracteres.\n");
+        }
+    } while (!valido);
+}
+
+// Função 5: Jogo de Adivinhação
+void jogoAdivinhacao() {
+    srand(time(NULL));
+    int numero = rand() % 50 + 1, palpite, tentativas = 5;
+    printf("Adivinhe o número entre 1 e 50. Você tem 5 tentativas.\n");
+    while (tentativas > 0) {
+        printf("Tentativa %d: ", 6 - tentativas);
+        scanf("%d", &palpite);
+        if (palpite == numero) {
+            printf("Parabéns! Você acertou.\n");
+            return;
+        } else if (palpite > numero) {
+            printf("Muito alto!\n");
+        } else {
+            printf("Muito baixo!\n");
+        }
+        tentativas--;
+    }
+    printf("Você perdeu! O número era %d.\n", numero);
+}
+
+// Função 6: Gerador de Fatores
+void geradorFatores() {
+    int n, i, primo = 1;
+    printf("Digite um número inteiro: ");
+    scanf("%d", &n);
+    printf("Fatores de %d: ", n);
+    for (i = 1; i <= n; i++) {
+        if (n % i == 0) printf("%d ", i);
+    }
+    printf("\n");
+    for (i = 2; i <= n / 2; i++) {
+        if (n % i == 0) {
+            primo = 0;
+            break;
+        }
+    }
+    if (primo && n > 1) printf("%d é um número primo.\n", n);
+    else printf("%d não é um número primo.\n", n);
+}
+
+// Função 7: Classificador de Idade
+void classificadorIdade() {
+    int idade;
+    do {
+        printf("Digite a idade (valor negativo para sair): ");
+        scanf("%d", &idade);
+        if (idade < 0) break;
+        if (idade <= 12)
+            printf("Criança\n");
+        else if (idade <= 17)
+            printf("Adolescente\n");
+        else if (idade <= 64)
+            printf("Adulto\n");
+        else
+            printf("Idoso\n");
+    } while (1);
+}
+
+// Função 8: Cálculo de Média e Status do Aluno
+void mediaAluno() {
+    float nota, soma = 0, media;
+    int contador = 0;
+    do {
+        printf("Digite uma nota (valor negativo para encerrar): ");
+        scanf("%f", &nota);
+        if (nota < 0) break;
+        soma += nota;
+        contador++;
+    } while (1);
+    if (contador == 0) {
+        printf("Nenhuma nota inserida.\n");
+        return;
+    }
+    media = soma / contador;
+    printf("Média: %.2f\n", media);
+    if (media >= 7)
+        printf("Aprovado\n");
+    else if (media >= 4)
+        printf("Recuperação\n");
+    else
+        printf("Reprovado\n");
+}
+
+// Função 9: Número de Ocorrências
+void numeroOcorrencias() {
+    int n, valor, alvo, ocorrencias = 0;
+    printf("Digite a quantidade de números: ");
+    scanf("%d", &n);
+    int numeros[n];
+    for (int i = 0; i < n; i++) {
+        printf("Digite o número %d: ", i + 1);
+        scanf("%d", &numeros[i]);
+    }
+    printf("Digite o número para contar as ocorrências: ");
+    scanf("%d", &alvo);
+    for (int i = 0; i < n; i++) {
+        if (numeros[i] == alvo) ocorrencias++;
+    }
+    printf("O número %d aparece %d vezes.\n", alvo, ocorrencias);
+}
+
+// Função 10: Tabela de Potências
+void tabelaPotencias() {
+    int n;
+    printf("Digite o valor de n: ");
+    scanf("%d", &n);
+    printf("Número  2^n  3^n  4^n\n");
+    for (int i = 1; i <= n; i++) {
+        printf("%d      %.0f    %.0f    %.0f\n", i, pow(i, 2), pow(i, 3), pow(i, 4));
+    }
+}
+
+// Menu principal
+void menu() {
+    printf("\n--- Menu Principal ---\n");
+    printf("1. Calculadora Simples\n");
+    printf("2. Contador de Vogais\n");
+    printf("3. Conversor de Temperatura\n");
+    printf("4. Validador de Senha\n");
+    printf("5. Jogo de Adivinhação\n");
+    printf("6. Gerador de Fatores\n");
+    printf("7. Classificador de Idade\n");
+    printf("8. Média e Status do Aluno\n");
+    printf("9. Número de Ocorrências\n");
+    printf("10. Tabela de Potências\n");
+    printf("0. Sair\n");
+}
+
+int main() {
+    int opcao;
+    do {
+        menu();
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+        switch (opcao) {
+            case 1: calculadoraSimples(); break;
+            case 2: contadorVogais(); break;
+            case 3: conversorTemperatura(); break;
+            case 4: validadorSenha(); break;
+            case 5: jogoAdivinhacao(); break;
+            case 6: geradorFatores(); break;
+            case 7: classificadorIdade(); break;
+            case 8: mediaAluno(); break;
+            case 9: numeroOcorrencias(); break;
+            case 10: tabelaPotencias(); break;
+            case 0: printf("Saindo...\n"); break;
+            default: printf("Opção inválida.\n");
+        }
+    } while (opcao != 0);
+    return 0;
+}
